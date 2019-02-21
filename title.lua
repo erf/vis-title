@@ -3,9 +3,7 @@ function setTitle (title)
 end
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
-    local name = win.file.name
-	if name == nil then name = '[No Name]' end
-	setTitle(name)
+	setTitle(win.file.name or '[No Name]')
 end)
 
 vis.events.subscribe(vis.events.FILE_SAVE_POST, function(file, path)
