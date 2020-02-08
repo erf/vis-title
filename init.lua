@@ -1,9 +1,13 @@
 function set_title(title)
-	vis:command(string.format(":!echo -ne '\\033]0;%s\\007'", title))
+	print(string.format('\27]0;%s\7', title))
 end
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	set_title(win.file.name or '[No Name]')
+end)
+
+vis.events.subscribe(vis.events.WIN_CLOSE, function(win)
+	set_title('')
 end)
 
 vis.events.subscribe(vis.events.FILE_SAVE_POST, function(file, path)
