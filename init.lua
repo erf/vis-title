@@ -3,11 +3,12 @@ function set_title(title)
 end
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
+	print('\27[22t')
 	set_title(win.file.name or '[No Name]')
 end)
 
 vis.events.subscribe(vis.events.WIN_CLOSE, function(win)
-	set_title('')
+	print('\27[23t')
 end)
 
 vis.events.subscribe(vis.events.FILE_SAVE_POST, function(file, path)
