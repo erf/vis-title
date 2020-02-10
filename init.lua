@@ -9,7 +9,7 @@ end)
 
 vis.events.subscribe(vis.events.WIN_CLOSE, function(win)
 	--vis:command(":!echo -ne '\\033[23t'") -- xterm pop title?
-	vis:command(":!echo -ne '\\033]0;\\007'") -- set empty title
+	set_title('')
 end)
 
 vis.events.subscribe(vis.events.FILE_SAVE_POST, function(file, path)
