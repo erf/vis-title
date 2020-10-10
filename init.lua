@@ -4,7 +4,7 @@ end
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
 	vis:command(":!echo -ne '\\033[22t'") -- xterm push title?
-	set_title(win.file.name or '[No Name]')
+	set_title(string.gsub(win.file.name or '[No Name]', '.*/', ''))
 end)
 
 vis.events.subscribe(vis.events.WIN_CLOSE, function(win)
@@ -13,5 +13,5 @@ vis.events.subscribe(vis.events.WIN_CLOSE, function(win)
 end)
 
 vis.events.subscribe(vis.events.FILE_SAVE_POST, function(file, path)
-	set_title(file.name)
+	set_title(string.gsub(file.name, '.*/', ''))
 end)
