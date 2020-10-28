@@ -3,13 +3,7 @@ function set_title(title)
 end
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
-	vis:command(":!echo -ne '\\033[22t'") -- xterm push title?
 	set_title(win.file.name or '[No Name]')
-end)
-
-vis.events.subscribe(vis.events.WIN_CLOSE, function(win)
-	vis:command(":!echo -ne '\\033[23t'") -- xterm pop title?
-	--set_title('')
 end)
 
 vis.events.subscribe(vis.events.FILE_SAVE_POST, function(file, path)
