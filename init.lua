@@ -1,7 +1,7 @@
 require('vis')
 
 local function set_title(title)
-	vis:command(string.format(":!printf '\\033]0;%s\\007'", title))
+	vis:command(string.format(":!printf '\\033]2;vis %s\\007'", title))
 end
 
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
